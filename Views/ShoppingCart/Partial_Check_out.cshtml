@@ -1,0 +1,63 @@
+﻿@using Thesis.Services;
+@using Thesis.Services.SendMailThanhToan;
+@inject IHttpContextAccessor _httpContextAccessor
+@inject IWebHostEnvironment _env
+@inject SendMailService _sendMailService
+@inject AppDbContext _db
+
+@{
+	var model = new Thesis.Controllers.ShoppingCartController(_httpContextAccessor, _env, _sendMailService, _db).getProductCheckOut();
+}
+
+<div class="col-md-6 d-flex">
+	<div class="cart-detail cart-total bg-light p-3 p-md-4">
+		<h3 class="billing-heading mb-4">Hóa đơn</h3>
+		@if (model != null && model.Count > 0)
+		{
+			var tongTien = decimal.Zero;
+			foreach (var item in model)
+			{
+				tongTien += item.TotalPrice;
+			}
+			<p class="d-flex">
+				<span>Tổng tiền</span>
+				<span>@string.Format("{0:N0} VNĐ", tongTien)</span>
+			</p>
+
+			<p class="d-flex">
+				<span>Phí vận chuyển</span>
+				@if (tongTien > 1000000m)
+				{
+					<span>@string.Format("{0:N0} VNĐ", 0)</span>
+				}
+				else
+				{
+					<span>@string.Format("{0:N0} VNĐ", tongTien*(decimal)0.001)</span>
+				}			
+			</p>
+			<p class="d-flex">
+				<span>Giảm giá</span>
+				@if (tongTien > 1000000m)
+				{
+					<span>@string.Format("{0:N0} VNĐ", tongTien*(decimal)0.02)</span>
+				}
+				else
+				{
+					<span>@string.Format("{0:N0} VNĐ", 0)</span>
+				}
+			</p>
+			<hr>
+			<p class="d-flex total-price">
+				<span>Phải trả</span>
+				@if (tongTien > 1000000m)
+				{
+					<span>@string.Format("{0:N0} VNĐ", (tongTien - tongTien * (decimal)0.02))</span>
+				}
+				else
+				{
+					<span>@string.Format("{0:N0} VNĐ", (tongTien + tongTien * (decimal)0.001))</span>
+				}
+			</p>
+		}
+	</div>
+</div>	

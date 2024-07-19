@@ -1,0 +1,324 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Thesis.Models.Entity.Categories
+<section id="home-section" class="hero">
+          <div class="home-slider owl-carousel">
+          <div class="slider-item js-fullheight">
+              <div class="overlay"></div>
+            <div class="container-fluid p-0">
+              <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+                  <img class="one-third order-md-last img-fluid" src="~/TemplateMain/images/bg_1.png" alt="">
+                  <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                      <div class="text">
+                          <span class="subheading">Bộ sưu tập</span>
+                          <div class="horizontal">
+                            <h1 class="mb-4 mt-3">Chào hè 2024</h1>
+                            <p class="mb-4">Khám phá phong cách độc đáo và sự tinh tế trong từng chi tiết tại Thang Boutique của chúng tôi!</p>
+
+                            <p><a href="/Product" class="btn-custom">Khám phá ngay</a></p>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="slider-item js-fullheight">
+              <div class="overlay"></div>
+            <div class="container-fluid p-0">
+              <div class="row d-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+                  <img class="one-third order-md-last img-fluid" src="~/TemplateMain/images/bg_2.png" alt="">
+                  <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                      <div class="text">
+                          <span class="subheading">Bộ sưu tập</span>
+                          <div class="horizontal">
+                            <h1 class="mb-4 mt-3">Kỷ niệm ngày thống nhất đất nước</h1>
+                            <p class="mb-4">Nơi bạn tìm thấy những bộ trang phục và phụ kiện thời trang đẳng cấp, phản ánh phong cách và cá nhân của bạn một cách hoàn hảo.</p>
+
+                            <p><a href="/Product" class="btn-custom">Khám phá ngay</a></p>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+            <div class="container">
+                <div class="row no-gutters ftco-services">
+          <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services p-4 py-md-5">
+              <div class="icon d-flex justify-content-center align-items-center mb-4">
+                    <span class="flaticon-bag"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Miễn phí vận chuyển</h3>
+                <p>Mua sắm không cần phải lo lắng về chi phí vận chuyển! Tận hưởng dịch vụ vận chuyển miễn phí khi bạn mua sắm tại cửa hàng quần áo của chúng tôi.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services p-4 py-md-5">
+              <div class="icon d-flex justify-content-center align-items-center mb-4">
+                    <span class="flaticon-customer-service"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Hỗ trợ khách hàng</h3>
+                <p>Đội ngũ nhân viên nhiệt tình và chuyên nghiệp luôn sẵn lòng lắng nghe và giải đáp mọi thắc mắc của bạn. Chúng tôi cam kết đảm bảo sự hài lòng và trải nghiệm mua sắm tốt nhất cho mỗi khách hàng.</p>
+              </div>
+            </div>    
+          </div>
+          <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services p-4 py-md-5">
+              <div class="icon d-flex justify-content-center align-items-center mb-4">
+                    <span class="flaticon-payment-security"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Thanh toán an toàn</h3>
+                <p>Chúng tôi sử dụng các phương thức thanh toán an toàn và đáng tin cậy để bảo vệ thông tin cá nhân và tài khoản của bạn. Với công nghệ mã hóa tiên tiến, bạn có thể yên tâm khi thực hiện thanh toán trực tuyến tại cửa hàng của chúng tôi. </p>
+              </div>
+            </div>      
+          </div>
+        </div>
+            </div>
+        </section>
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+                <div class="row justify-content-center mb-3 pb-3">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Các sản phẩm bán chạy</h2>
+            <p>Phong cách độc đáo - Sự tinh tế trong từng chi tiết</p>
+          </div>
+        </div>   		
+        </div>
+        <div class="container">
+            <!--Các sản phẩm trên trang chủ-->
+            <div class="row">              
+                @Html.Partial("~/Views/Menu/ProductList.cshtml")
+            </div>
+            <!--Kết thúc các sản phẩm trên Trang chủ-->
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
+        <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-lg-4">
+                        <div class="choose-wrap divider-one img p-5 d-flex align-items-end" style="background-image: url(/TemplateMain/images/choose-1.jpg);">
+
+                        <div class="text text-center text-white px-2">
+                                <span class="subheading">Giày nam</span>
+                                <h2>Bộ sưu tập</h2>
+                                <p>Đôi chân xứng đáng với những bước đi đẳng cấp</p>
+                                <p><a href="/Product" class="btn btn-black px-3 py-2">Mua ngay</a></p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-8">
+                    <div class="row no-gutters choose-wrap divider-two align-items-stretch">
+                        <div class="col-md-12">
+                            <div class="choose-wrap full-wrap img align-self-stretch d-flex align-item-center justify-content-end" style="background-image: url(/TemplateMain/images/choose-2.jpg);">
+                                <div class="col-md-7 d-flex align-items-center">
+                                    <div class="text text-white px-5">
+                                        <span class="subheading">Giày nữ</span>
+                                        <h2>Bộ sưu tập</h2>
+                                        <p>Đôi chân xứng đáng với những bước đi đẳng cấp</p>
+                                    <p><a href="/Product" class="btn btn-black px-3 py-2">Mua ngay</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row no-gutters">
+                                <div class="col-md-6">
+                                    <div class="choose-wrap wrap img align-self-stretch bg-light d-flex align-items-center">
+                                        <div class="text text-center px-5">
+                                            <span class="subheading">Sale chào hè 2024</span>
+                                            <h2>Giảm giá lên tới 50%</h2>
+                                            <p>Chào đón những khoảnh khắc đầy năng lượng và sôi động!</p>
+                                            <p><a href="/Product" class="btn btn-black px-3 py-2">Mua ngay</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="choose-wrap wrap img align-self-stretch d-flex align-items-center" style="background-image: url(/Uploads/Nam%20-%20%C3%81o%20thun/%C3%81o%20Ph%C3%B4ng%20Nam%20Clean%20Vi%E1%BB%87t%20Nam%20Do%20Great%20Things%20-299k/ao-thun-nam-tsm7131-xah-3.jpg);">
+                                        <div class="text text-center text-white px-5">
+                                            <span class="subheading">Áo thun</span>
+                                            <h2>Hàng bán chạy</h2>
+                                            <p>Cơ hội không thể bỏ lỡ để sắm sửa với giá ưu đãi nhất!</p>
+                                            <p><a href="/Product" class="btn btn-black px-3 py-2">Mua ngay</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-deal bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/Uploads/Nam%20-%20%C3%81o%20ch%E1%BB%91ng%20n%E1%BA%AFng/%C3%81o%20Ch%E1%BB%91ng%20N%E1%BA%AFng%20Nam%20C%C3%B3%20M%C5%A9%20-%20599k/ao-chong-nang-nam-acm6010-gxm-3%20xoa%20phong.png" class="img-fluid" alt="Lỗi hiển thị">
+                </div>
+                <div class="col-md-6">
+                    <div class="heading-section heading-section-white">
+                        <span class="subheading">Giảm giá sốc</span>
+                <h2 class="mb-3">Giảm giá sốc</h2>
+              </div>
+                    <div id="timer" class="d-flex mb-4">
+                          <div class="time" id="days"></div>
+                          <div class="time pl-4" id="hours"></div>
+                          <div class="time pl-4" id="minutes"></div>
+                          <div class="time pl-4" id="seconds"></div>
+                        </div>
+                        <div class="text-deal">
+                            <h2><a href="#">Áo chống nắng nam có mũ</a></h2>
+                            <p class="price"><span class="mr-2 price-dc">499.000,00đ</span><span class="price-sale">249.000,00đ</span></p>
+                            <ul class="thumb-deal d-flex mt-4">
+                                <li class="img" style="background-image: url(/Uploads/Nam%20-%20%C3%81o%20ch%E1%BB%91ng%20n%E1%BA%AFng/%C3%81o%20Ch%E1%BB%91ng%20N%E1%BA%AFng%20Nam%20C%C3%B3%20M%C5%A9%20-%20599k/ao-chong-nang-nam-acm6010-gxm-4-xoa-phong.png);"></li>
+                                <li class="img" style="background-image: url(/Uploads/Nam%20-%20%C3%81o%20ch%E1%BB%91ng%20n%E1%BA%AFng/%C3%81o%20Ch%E1%BB%91ng%20N%E1%BA%AFng%20Nam%20C%C3%B3%20M%C5%A9%20-%20599k/ao-chong-nang-nam-acm6010-gxm-5-xoa-phong.png);"></li>
+                                <li class="img" style="background-image: url(/Uploads/Nam%20-%20%C3%81o%20ch%E1%BB%91ng%20n%E1%BA%AFng/%C3%81o%20Ch%E1%BB%91ng%20N%E1%BA%AFng%20Nam%20C%C3%B3%20M%C5%A9%20-%20599k/ao-chong-nang-nam-acm6010-gxm-3%20xoa%20phong.png);"></li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="services-flow">
+                    <div class="services-2 p-4 d-flex ftco-animate">
+                        <div class="icon">
+                            <span class="flaticon-bag"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Vận chuyển miễn phí</h3>
+                            <p class="mb-0">Tận hưởng dịch vụ vận chuyển miễn phí khi bạn mua sắm tại Thang Boutique của chúng tôi.</p>
+                        </div>
+                    </div>
+                    <div class="services-2 p-4 d-flex ftco-animate">
+                        <div class="icon">
+                            <span class="flaticon-heart-box"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Quà tặng có giá trị</h3>
+                            <p class="mb-0">Tại cửa hàng của chúng tôi, chúng tôi tự hào mang đến những món quà có giá trị đích thực - từ những sản phẩm thời trang độc đáo đến những bộ trang sức sang trọng.</p>
+                        </div>
+                    </div>
+                    <div class="services-2 p-4 d-flex ftco-animate">
+                        <div class="icon">
+                            <span class="flaticon-payment-security"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Hỗ trợ 24/24</h3>
+                            <p class="mb-0">Với dịch vụ hỗ trợ 24/24, chúng tôi cam kết đảm bảo sự thoải mái và an tâm cho quý khách hàng. Đừng ngần ngại liên hệ với chúng tôi bất cứ khi nào bạn cần!</p>
+                        </div>
+                    </div>
+                    <div class="services-2 p-4 d-flex ftco-animate">
+                        <div class="icon">
+                            <span class="flaticon-customer-service"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Hỗ trợ 24/7</h3>
+                            <p class="mb-0">Dù là ngày hay đêm, cuối tuần hay ngày lễ, chúng tôi sẵn lòng đáp ứng mọi nhu cầu và giải đáp mọi thắc mắc của bạn. Hãy yên tâm, chúng tôi luôn ở đây để hỗ trợ bạn!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <div class="col-lg-7">
+              <div class="heading-section ftco-animate mb-5">
+                <h2 class="mb-4">Khách hàng nói về chúng tôi</h2>
+                <p>Phong cách độc đáo - Sự tinh tế trong từng chi tiết</p>
+              </div>
+            <div class="carousel-testimony owl-carousel">
+              <div class="item">
+                <div class="testimony-wrap">
+                  <div class="user-img mb-4" style="background-image: url(/TemplateMain/images/person_1.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4 pl-4 line">Chất lượng sản phẩm tuyệt vời, dịch vụ chuyên nghiệp và thân thiện. Sẽ quay lại mua sắm ở đây!</p>
+                    <p class="name">Nguyễn Hoàng Quân</p>
+                    <span class="position">Khách hàng</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap">
+                  <div class="user-img mb-4" style="background-image: url(/TemplateMain/images/person_2.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4 pl-4 line">Rất hài lòng với việc mua sắm tại cửa hàng boutique này. Sản phẩm đẹp và giá cả hợp lý.</p>
+                    <p class="name">Tô Tùng Dương</p>
+                    <span class="position">Khách hàng</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap">
+                  <div class="user-img mb-4" style="background-image: url(/TemplateMain/images/person_3.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4 pl-4 line">Đồng nghiệp đã giới thiệu cho tôi cửa hàng này và tôi rất hạnh phúc về sự lựa chọn của mình. Sản phẩm đa dạng và đẹp mắt.</p>
+                    <p class="name">Nguyễn Minh Khang</p>
+                    <span class="position">Khách hàng</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap">
+                  <div class="user-img mb-4" style="background-image: url(/TemplateMain/images/person_1.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4 pl-4 line">Đặt hàng trực tuyến và nhận được sản phẩm ngay sau đó. Dịch vụ giao hàng nhanh chóng và chất lượng.</p>
+                    <p class="name">Trần Trung Đức </p>
+                    <span class="position">Khách hàng</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap">
+                  <div class="user-img mb-4" style="background-image: url(/TemplateMain/images/person_1.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4 pl-4 line">Tôi đã mua một bộ suit từ cửa hàng này và nhận được nhiều lời khen ngợi từ bạn bè. Sẽ giới thiệu cho mọi người!</p>
+                    <p class="name">Tô Minh Phong</p>
+                    <span class="position">Khách hàng</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+@section Scripts{
+     <script src="~/js/jsShopping.js"></script>
+}

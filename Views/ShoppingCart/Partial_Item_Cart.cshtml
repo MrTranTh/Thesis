@@ -1,0 +1,116 @@
+﻿@using Newtonsoft.Json;
+@using Thesis.Services;
+@using Thesis.Services.SendMailThanhToan;
+@inject IHttpContextAccessor _httpContextAccessor
+@inject IWebHostEnvironment _env
+@inject SendMailService _sendMailService
+@inject AppDbContext _db
+@{
+	var model = new Thesis.Controllers.ShoppingCartController(_httpContextAccessor, _env, _sendMailService, _db).getProduct();
+}
+
+<table class="table">
+	<thead class="thead-primary">
+		<tr class="text-center">
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th>Tên sản phẩm </th>
+			<th>Giá</th>
+			<th>Số lượng</th>
+			<th>Thành tiền</th>
+		</tr>
+	</thead>
+	<tbody>
+	@if(model != null && model.Count > 0)
+	{
+		foreach(var item in model)
+		{
+			<tr class="text-center" id="trow_@item.ProductId">
+				<td>
+					<a href="#" class="btn btn-sm btn-danger btnDelete" data-id='@item.ProductId'>Xóa</a>
+					<a href="#" class="btn btn-sm btn-success btnUpdate" data-id='@item.ProductId'>Sửa</a>
+				</td>
+
+				<td class="image-prod"><div class="img" style="background-image:url(@item.ProductImage);"></div></td>
+
+				<td class="product-name">
+					<h3>@item.ProductName</h3>
+				</td>
+
+					<td class="price">@string.Format("{0:N0} VNĐ", item.Price)</td>
+
+				<td class="quantity">
+					<div class="input-group mb-3">
+						<input type="text" name="quantity" class="quantity form-control input-number" value="@item.Quantity" min="1" max="1000" id="Quantity_@item.ProductId">
+					</div>
+				</td>
+
+					<td class="total">@string.Format("{0:N0} VNĐ", item.Price * item.Quantity)</td>
+			</tr><!-- END TR-->
+		}
+	}
+	else
+	{
+		<tr class="text-center">
+			<td>
+				<p>Chưa có sản phẩm nào trong Giỏ hàng</p>
+			</td>
+				
+		</tr>
+	}
+	</tbody>
+</table>
+
+<div class="row justify-content-start">
+	<div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
+		<div class="cart-total mb-3">
+			@if (model != null && model.Count > 0)
+			{
+				var tongTien = decimal.Zero;
+				foreach (var item in model)
+				{
+					tongTien += item.TotalPrice;
+				}
+				<p class="d-flex">
+					<span>Tổng tiền</span>
+					<span>@string.Format("{0:N0} VNĐ", tongTien)</span>
+				</p>
+
+				<p class="d-flex">
+					<span>Phí vận chuyển</span>
+					@if (tongTien > 1000000m)
+					{
+						<span>@string.Format("{0:N0} VNĐ", 0)</span>
+					}
+					else
+					{
+						<span>@string.Format("{0:N0} VNĐ", tongTien*(decimal)0.001)</span>
+					}
+				</p>
+				<p class="d-flex">
+					<span>Giảm giá</span>
+					@if (tongTien > 1000000m)
+					{
+						<span>@string.Format("{0:N0} VNĐ", tongTien*(decimal)0.02)</span>
+					}
+					else
+					{
+						<span>@string.Format("{0:N0} VNĐ", 0)</span>
+					}
+				</p>
+				<hr>
+				<p class="d-flex total-price">
+					<span>Phải trả</span>
+					@if (tongTien > 1000000m)
+					{
+						<span>@string.Format("{0:N0} VNĐ", (tongTien - tongTien * (decimal)0.02))</span>
+					}
+					else
+					{
+						<span>@string.Format("{0:N0} VNĐ", (tongTien + tongTien * (decimal)0.001))</span>
+					}
+				</p>
+			}
+		</div>	
+	</div>
+</div>

@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "Danh sách tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model Thesis.Models.ThongKeViewModel
+<div class="pcoded-content">
+<div class="row">
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h5>Thông kê trực tuyến</h5>
+        </div>
+        <div class="card-body table-border-style">
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Số lượng người đang truy cập</th>                                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                                
+                            <tr class="bg-primary">
+                                
+                                <td>@ViewBag.OnlineUsersCount</td>
+                            </tr>
+                                
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h5>Thống kế lượng truy cập theo ngày</h5>
+        </div>
+        <div class="card-body table-border-style">
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Ngày</th>
+                            <th>Số lượng truy cập</th>                                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.AccessCountByDay)
+                    {
+                        <tr class="bg-primary">
+                            <td>@item.Key.ToShortDateString()</td>
+                            <td>@item.Value</td>
+                        </tr>
+                    }   
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h5>Thống kế lượng truy cập theo tháng</h5>
+        </div>
+        <div class="card-body table-border-style">
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Tháng</th>
+                            <th>Số lượng truy cập</th>                                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.AccessCountByMonth)
+                    {
+                        <tr class="bg-success">
+                            <td>@item.Key</td>
+                            <td>@item.Value</td>
+                        </tr>
+                    }  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h5>Thống kế lượng truy cập theo năm</h5>
+        </div>
+        <div class="card-body table-border-style">
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Năm</th>
+                            <th>Số lượng truy cập</th>                                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AccessCountByYear)
+                        {
+                            <tr class="bg-info">
+                                <td>@item.Key</td>
+                                <td>@item.Value</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>

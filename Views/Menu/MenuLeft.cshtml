@@ -1,0 +1,23 @@
+﻿@inject AppDbContext _db
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+	var model = new Thesis.Controllers.MenuController(_db).MenuLeft();
+}
+
+@if(model != null && model.Count > 0)
+{
+    foreach(var item in model)
+    {
+    <div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="headingOne">
+			<h4 class="panel-title">
+				<a  href='/danh-muc-san-pham/@item.Alias-@item.Id' >@item.Title
+				</a>
+			</h4>
+		</div>  
+	</div>
+    }
+}

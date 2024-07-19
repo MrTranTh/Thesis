@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+@using Thesis.Models.Identity
+
+@inject IAuthorizationService authorizationService
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    var resultAuthorize = await authorizationService.AuthorizeAsync(this.User, "ShowAdminMenu");
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+        @* <li class="nav-item dropdown">
+            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
+              Manage
+            </a>
+            <div class="dropdown-menu dropdown-menu-right"> *@
+                @* <a href="/Role/Index">Quản lý role</a>
+
+                <a href="/ManageUser/Index">Quản lý user</a> *@
+
+            @* </div>
+
+        </li>  *@    
+        
+     <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Manage
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/Admin/Home">Quản lý trên Web </a>
+        @if (resultAuthorize.Succeeded)
+        {
+            <a class="dropdown-item" href="/Role/Index">Quản lý Role</a>
+            <a class="dropdown-item" href="/ManageUser/Index">Quản lý user</a>
+        } 
+      </div>
+    </div>
+}
+
+

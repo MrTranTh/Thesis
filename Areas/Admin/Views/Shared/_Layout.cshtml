@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Trang quản trị</title>
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Tran Duc Thang" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="/TemplateAdmin/assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="/TemplateAdmin/assets/css/style.css">
+</head>
+
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar">
+		<div class="navbar-wrapper">
+			<div class="navbar-content scroll-div">
+				
+				<div class="">
+					<div class="main-menu-header">
+						<img class="img-radius" src="~/TemplateAdmin/assets/images/user/avatar-6.jpg" alt="User-Profile-Image">
+						<div class="user-details">
+							<span>Trần Đức Thắng</span>
+							<div id="more-details">CEO Thang Boutique</div>
+						</div>
+					</div>
+					<div class="collapse" id="nav-user-link">
+						<ul class="list-unstyled">
+							@* <li class="list-group-item"><a href="#"><i class="feather icon-user m-r-5"></i>View Profile</a></li>
+							<li class="list-group-item"><a href="#"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
+							<li class="list-group-item"><a href="#"><i class="feather icon-log-out m-r-5"></i>Logout</a></li> *@
+						</ul>
+					</div>
+				</div>
+				
+				<ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+						<label>Tổng quan chung</label>
+					</li>
+					<li class="nav-item">
+						<a href="/Admin/Home" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Giới thiệu chung</span></a>
+					</li>
+					<li class="nav-item">
+					    <a href="/Admin/Categories" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Danh mục</span></a>
+					</li>
+                    @* <li class="nav-item">
+                        <a href="" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Quảng cáo</span></a>
+                    </li> *@
+					<li class="nav-item">
+						<a href="/Admin/News" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tin tức</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="/Admin/Posts" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Bài viết</span></a>
+					</li>
+					<li class="nav-item pcoded-hasmenu">
+						<a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Quản lý sản phẩm</span></a>
+						<ul class="pcoded-submenu">
+							<li><a href="/Admin/ProductCategories" target="_self">Danh mục sản phẩm</a></li>
+							<li><a href="/Admin/Product" target="_self">Sản phẩm</a></li>
+						</ul>
+					</li>
+					@* <li class="nav-item">
+						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Cấu hình hệ thống</span></a>
+					</li> *@
+					<li class="nav-item">
+						<a href="/Admin/TruyCap" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Thống kê lượt truy cập</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="/Home/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Trang xác thực</span></a>
+					</li>
+				</ul>
+						
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">	
+		<div class="m-header">
+			<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+			<a href="#!" class="b-brand">
+				<!-- ========   change your logo hear   ============ -->
+				<img src="/Uploads/logo-trang.png" alt="" class="logo" width=200px>
+				<img src="/TemplateAdmin/assets/images/logo-icon.png" alt="" class="logo-thumb">
+			</a>
+			<a href="#!" class="mob-toggler">
+				<i class="feather icon-more-vertical"></i>
+			</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			@* @RenderSection("naviheader", required: false) *@
+			<ul class="navbar-nav ml-auto">
+				<li>
+					<div class="dropdown">
+								
+						<div class="dropdown-menu dropdown-menu-right notification">
+							<div class="noti-head">
+										
+							</div>
+									
+							<div class="noti-footer">
+										
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>		
+	</header>
+	<!-- [ Header ] end -->
+	
+	<!-- [ Main Content ] start -->
+	<section class="pcoded-main-container">
+		@RenderBody()
+	</section>
+	<!-- [ Main Content ] end -->
+    <!-- Warning Section start -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 11]>
+        <div class="ie-warning">
+            <h1>Warning!!</h1>
+            <p>You are using an outdated version of Internet Explorer, please upgrade
+               <br/>to any of the following web browsers to access this website.
+            </p>
+            <div class="iew-container">
+                <ul class="iew-download">
+                    <li>
+                        <a href="http://www.google.com/chrome/">
+                            <img src="assets/images/browser/chrome.png" alt="Chrome">
+                            <div>Chrome</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/en-US/firefox/new/">
+                            <img src="assets/images/browser/firefox.png" alt="Firefox">
+                            <div>Firefox</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.opera.com">
+                            <img src="assets/images/browser/opera.png" alt="Opera">
+                            <div>Opera</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/safari/">
+                            <img src="assets/images/browser/safari.png" alt="Safari">
+                            <div>Safari</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="assets/images/browser/ie.png" alt="">
+                            <div>IE (11 & above)</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <p>Sorry for the inconvenience!</p>
+        </div>
+    <![endif]-->
+    <!-- Warning Section Ends -->
+	
+    <!-- Required Js -->
+    <script src="~/TemplateAdmin/assets/js/vendor-all.min.js"></script>
+    <script src="~/TemplateAdmin/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="~/TemplateAdmin/assets/js/pcoded.min.js"></script>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!--CSS, JS của Summernote-->
+	<script src="~/lib/summernote/summernote-bs4.min.js"></script>
+	<link rel="stylesheet" href="~/lib/summernote/summernote-bs4.min.css">
+	
+	<!--CSS, JS của Elfinder-->
+	<link rel="stylesheet" href="~/lib/jqueryui/themes/base/theme.css" />
+	<link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="~/lib/elfinder/css/elfinder.full.css" />
+	<link rel="stylesheet" href="~/lib/elfinder/css/theme.min.css" />
+	<script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+	<script src="~/lib/elfinder/js/elfinder.min.js"></script>
+
+	@RenderSection("scripts", required: false)	
+</body>
+</html>

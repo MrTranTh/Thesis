@@ -1,0 +1,150 @@
+﻿@model X.PagedList.IPagedList<Thesis.Models.Entity.Posts>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@{
+	ViewData["Title"] = "Bài viết";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hero-wrap hero-bread" style="background-image: url('/TemplateMain/images/bg_6.jpg');">
+	 <div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+		  <div class="col-md-9 ftco-animate text-center">
+			  <p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> <span>Bài viết</span></p>
+			  <h1 class="mb-0 bread">Bài viết</h1>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<section class="ftco-section ftco-degree-bg">
+	  <div class="container">
+		<div class="row">
+		  <div class="col-lg-8 order-lg-last ftco-animate">
+			<div class="row">
+				@if (Model != null && Model.Any())
+				{
+					foreach (var item in Model)
+					{
+						<div class="col-md-12 d-flex ftco-animate">
+						<div class="blog-entry align-self-stretch d-md-flex">
+							<a href="blog-single.html" class="block-20" style="background-image: url('@item.Image');">
+							</a>
+							<div class="text d-block pl-md-4">
+							<div class="meta mb-3">
+								<div><a href="#">@item.CreatedDate</a></div>
+								<div><a href="#">Duc Thang</a></div>
+								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 10</a></div>
+							</div>
+							<h3 class="heading"><a href="#">@item.Title</a></h3>
+							<p>@item.Description</p>
+							<p><a href="#" class="btn btn-primary py-2 px-3 bai-viet" data-id="@item.Id">Đọc thêm</a></p>
+							</div>
+						</div>
+						</div>
+					}
+				}					
+			</div>
+				
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<li class="page-item @(Model.IsFirstPage ? "disabled" : "")">
+						<a class="page-link" href="@Url.Action("Index", new { page = 1 })" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					@for (var i = 1; i <= Model.PageCount; i++)
+					{
+						<li class="page-item @(Model.PageNumber == i ? "active" : "")">
+							<a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+						</li>
+					}
+					<li class="page-item @(Model.IsLastPage ? "disabled" : "")">
+						<a class="page-link" href="@Url.Action("Index", new { page = Model.PageCount })" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		  </div> <!-- .col-md-8 -->
+		  <div class="col-lg-4 sidebar ftco-animate">
+			<div class="sidebar-box">
+			  <form action="#" class="search-form">
+				<div class="form-group">
+				  <span class="icon ion-ios-search"></span>
+				  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+				</div>
+			  </form>
+			</div>
+			<div class="sidebar-box ftco-animate">
+				<h3 class="heading">Danh mục sản phẩm</h3>
+				  <ul class="categories">
+						@Html.Partial("~/Views/Menu/MenuLeft.cshtml")
+				  </ul>
+			</div>
+
+			<div class="sidebar-box ftco-animate">
+			 <h3 class="heading">Bài viết gần đây</h3>
+			@{
+				var model = Model.OrderByDescending(x => x.CreatedDate).ToList().Take(4);
+			}
+			@if (model != null && model.Any())
+			{
+				foreach (var item in model)
+				{
+					<div class="block-21 mb-4 d-flex">
+						<a class="blog-img mr-4" style="background-image: url('@item.Image');"></a>
+						<div class="text">
+							<h3 class="heading-1"><a href="/bai-viet/@item.Id">@item.Title</a></h3>
+							<div class="meta">
+							<div><a href="#"><span class="icon-calendar"></span> @item.CreatedDate</a></div>
+							<div><a href="#"><span class="icon-person"></span> Duc Thang</a></div>
+							<div><a href="#"><span class="icon-chat"></span> </a></div>
+							</div>
+						</div>
+					</div>			
+				}
+			}		
+			<div class="sidebar-box ftco-animate">
+			  <h3 class="heading">Tag Cloud</h3>
+			  <div class="tagcloud">
+				<a href="#" class="tag-cloud-link">shop</a>
+				<a href="#" class="tag-cloud-link">products</a>
+				<a href="#" class="tag-cloud-link">shirt</a>
+				<a href="#" class="tag-cloud-link">jeans</a>
+				<a href="#" class="tag-cloud-link">shoes</a>
+				<a href="#" class="tag-cloud-link">dress</a>
+				<a href="#" class="tag-cloud-link">coats</a>
+				<a href="#" class="tag-cloud-link">jumpsuits</a>
+			  </div>
+			</div>
+
+			<div class="sidebar-box ftco-animate">
+			  <h3 class="heading">Trích dẫn</h3>
+			  <p>"Dù bạn ở đâu, dù bạn là ai, mặc đẹp luôn là một phần của cuộc sống hàng ngày. Thời trang không chỉ là việc mặc quần áo, mà còn là cách để thể hiện bản thân, diễn đạt cái tôi của mỗi người." - Blair Waldorf</p>
+			</div>
+		  </div>
+
+		</div>
+	  </div>
+	</section> <!-- .section -->
+
+@section Scripts{
+	<script>
+		$('.bai-viet').on('click', function () {
+			// Lấy id của bài viết từ thuộc tính data-id
+			var baiVietId = $(this).data('id');
+
+			// Gửi yêu cầu AJAX để lấy nội dung của bài viết dựa trên id
+			$.ajax({
+				url: '/bai-viet/' + baiVietId,
+				method: 'GET',
+				success: function () {
+					var newUrl = '/bai-viet/' + baiVietId;
+					window.location.href = newUrl;
+				}
+			});
+		});
+	</script>
+}
+

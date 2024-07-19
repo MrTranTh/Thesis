@@ -1,0 +1,74 @@
+﻿@using Thesis.Services;
+@using Thesis.Services.SendMailThanhToan;
+@inject IHttpContextAccessor _httpContextAccessor
+@inject IWebHostEnvironment _env
+@inject SendMailService _sendMailService
+@inject AppDbContext _db
+@{
+	var model = new Thesis.Controllers.ShoppingCartController(_httpContextAccessor, _env, _sendMailService, _db).getProductFormCheckOut();
+}
+
+
+	<form class="billing-form" asp-action="CheckOut" asp-controller="ShoppingCart" method="post" id="myForm">
+		<h3 class="mb-4 billing-heading">Thông tin khách hàng</h3>
+		<div class="row align-items-end">
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="firstname">Họ và tên</label>
+					<input type="text" class="form-control" placeholder="" asp-antiforgery="true" name="CustomerName" required>
+				</div>
+			</div>
+
+			<div class="w-100"></div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="streetaddress">Địa chỉ</label>
+					<input type="text" class="form-control" placeholder="" asp-antiforgery="true" name="Address" required>
+				</div>
+			</div>
+
+			<div class="w-100"></div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="phone">Số điện thoại</label>
+					<input type="text" class="form-control" placeholder="" asp-antiforgery="true" name="Phone" required>
+				</div>
+			</div>
+
+			<div class="w-100"></div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="emailaddress">Email</label>
+					<input type="text" class="form-control" placeholder="" asp-antiforgery="true" name="Email">
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="emailaddress">Phương thức thanh toán</label>
+					<select class="form-control" name="TypePayment">
+						<option value="1" selected>COD</option>
+						<option value="2">Thanh toán VNPAY</option>
+						<option value="3">Thanh toán PAYPAL</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="emailaddress">Lời nhắn</label>
+					<textarea class="form-control name="message" rows="4" cols="50" asp-antiforgery="true" name="Message"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<button type="submit" class="btn btn-block btn-success">Đặt hàng</button>
+			</div>
+		</div>
+	</form><!-- END -->

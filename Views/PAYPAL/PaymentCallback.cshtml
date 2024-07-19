@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Thanh toán thành công với PAYPAL";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Thesis.Models.PAYPAL.PaymentResponseModel
+<div class="hero-wrap hero-bread" style="background-image: url('/TemplateMain/images/bg_6.jpg');">
+    <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> <span>Thanh toán</span></p>
+            <h1 class="mb-0 bread">Thanh toán với PAYPAL</h1>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="pcoded-main-container">
+    <div class = "pcoded-content">
+        <div class="col-md-12">
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Thông tin đơn hàng</th>
+                                <th>Mã giao dịch</th>
+                                <th>Mã đơn hàng</th>
+                                <th>Phương thức thanh toán</th>
+                                <th>Mã thanh toán</th>
+                                <th>Tình trạng</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-primary">
+                                <td>@Model.OrderDescription</td>
+                                <td>@Model.TransactionId</td>
+                                <td>@Model.OrderId</td>
+                                <td>@Model.PaymentMethod</td>
+                                <td>@Model.PaymentId</td>
+                                <td>@Model.Success</td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+

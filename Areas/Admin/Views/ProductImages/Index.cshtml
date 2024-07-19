@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Thesis.Models.Entity.ProductImages>
+@{
+    ViewData["Title"] = "Quản lý ảnh sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutEmpty.cshtml";
+}
+<style>
+	.glImage{
+		list-style: none;
+		margin:0;
+		padding:0;
+		display:flex;
+	}
+
+	.glImage li{
+		display: inline-block;
+		position: relative;
+	}
+
+	.box-btn{
+		position: absolute;
+		bottom: 0;
+		left:0;
+		width:100%;
+		text-alight: center;
+	}
+</style>
+<div class="col-sm-12">
+	<div class="card">
+		<div class="card-header">
+			<h5>Thư viện hình ảnh</h5>
+			<button type="button" id="btnChonAnh" class="btn  btn-primary">
+				Chọn ảnh 
+			</button>	 
+		</div>
+		<div class="card-body">
+			<ul class="glImage">
+				@if (Model != null && Model.Any())
+				{
+					foreach (var items in Model)
+					{
+						<li id = "trow_"+ @items.Id>
+							<img src="@items.Image" width='150px' height='100%'>
+							<div class="box-btn">
+								<a href="#" class='btn btn-sm btn-danger btnDelete' data-id="@items.Id">
+									<i class="fa fa-trash"></i>
+								</a>
+								<a href="#" class='btn btn-sm btn-success btnDefault' data-id="@items.Id">
+									<i class="fa fa-check"></i>
+								</a>
+							</div>										
+						</li>
+					}
+				}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script>
+	//Xóa ảnh
+	$('body').on('click', '.btnDelete', function(){
+		var id = $(this).data("id");
+		var conf = confirm('Bạn muốn xóa bản ghi');
+		if(conf === true){
+			$.ajax({
+				url : '/Admin/ProductImages/DeleteProductImages',
+				type : 'POST',
+				data: {id : id},
+				success : function(rs){
+					if(rs.success){
+						$('trow_'+ id).remove();
+						location.reload();
+					}
+				}
+			});
+		}
+	});
+
+	//Đặ ảnh đại diện
+	$('body').on('click', '.btnDefault', function () {
+		var id = $(this).data("id");		
+		$.ajax({
+			url: '/Admin/ProductImages/chonAnhDaiDien',
+			type: 'POST',
+			data: { id: id },
+			success: function (rs) {
+				if (rs.success) {
+					alert("Chọn ảnh đại diện thành công!");
+				}
+			}
+		});		
+	});
+
+
+	//Chọn hình ảnh trong elfinder rồi thêm vào popup dialog
+	$(document).ready(function() {
+		$('#btnChonAnh').click(function() {
+		// Kích hoạt elfinder khi nhấp vào nút
+			$('<div>').dialogelfinder({
+				url: '/file-manager-connector', // Đường dẫn đến elfinder connector
+				commandsOptions: {
+				getfile: {
+					oncomplete: 'close' // Đóng elfinder sau khi chọn tập tin
+				}
+			},
+			getFileCallback: function(fileUrl) {
+				AddProductImages(@ViewBag.ProductId, fileUrl.url)		
+			}
+			}).dialogelfinder('instance');
+		});
+	});
+
+	function AddProductImages(id, url){
+		$.ajax({
+			url : '/Admin/ProductImages/AddProductImages',
+			type : 'POST',
+			data: {productid : id, url : url},
+			success : function(rs){
+				if(rs.success){
+					window.location.reload();
+				}
+			}
+		});
+	}
+</script>
+

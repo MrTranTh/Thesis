@@ -1,0 +1,32 @@
+﻿@* @model IEnumerable<Thesis.Models.Entity.Categories>
+
+@if(Model != null && Model.Any())
+{
+    foreach(var item in Model)
+    {
+        <p>@item.Id</p>
+    }
+} *@
+
+@inject AppDbContext _db
+@{
+    var model = new Thesis.Controllers.MenuController(_db).MenuTop();
+}
+
+@if (model != null && model.Count > 0)
+{
+    <ul class="navbar-nav ml-auto">
+    @foreach (var item in model)
+    {
+        <li class="nav-item active"><a href="/@item.Alias" class="nav-link">@item.Title</a></li>
+    }
+        <li class="nav-item cta cta-colored"><a href="/ShoppingCart" class="nav-link"><span id="checkout_items" class="icon-shopping_cart">[0]</span></a></li>
+     </ul>
+
+}
+
+
+              
+              
+
+            
